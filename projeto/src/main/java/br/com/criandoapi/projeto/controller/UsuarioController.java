@@ -24,9 +24,9 @@ import br.com.criandoapi.projeto.model.Usuario;
 import br.com.criandoapi.projeto.service.UsuarioService;
 import jakarta.validation.Valid;
 
-@RestController // classe de controlle, endpoint
-@CrossOrigin("*")//significa qualquer requisição para essa rota esta liberada
-@RequestMapping("/usuarios") //rota 
+@RestController 
+@CrossOrigin("*")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 	
 	private UsuarioService usuarioService;
@@ -35,14 +35,14 @@ public class UsuarioController {
 		this.usuarioService = usuarioService;
 	}
 
-	@GetMapping //buscar a lista de usuarios
+	@GetMapping 
 	public ResponseEntity<List<Usuario>> listaUsuarios(){
-		return ResponseEntity.status(200).body(usuarioService.listarUsuario()); //O status 200 significa que conseguiu se conectar com a aplicação e vai apresetar a lista de usuario
+		return ResponseEntity.status(200).body(usuarioService.listarUsuario()); 
 	}
 	
 	@PostMapping //criar dados de um usuario
 	public ResponseEntity<Usuario> criarUsuario (@Valid @RequestBody Usuario usuario) {
-		return ResponseEntity.status(201).body(usuarioService.criarUsuario(usuario)); //O status 201 significa que foi criado o usuario
+		return ResponseEntity.status(201).body(usuarioService.criarUsuario(usuario)); 
 	}
 	
 	@PutMapping //alterar dados de um usuario
@@ -51,7 +51,7 @@ public class UsuarioController {
 	}
 	
 	@DeleteMapping("/{id}") //
-	public ResponseEntity<?> excluirUsuario(@PathVariable Integer id) { //com o ? significa que é um usuario generico, então não vai presentar mais o usuario que foi deletado
+	public ResponseEntity<?> excluirUsuario(@PathVariable Integer id) { 
 		usuarioService.excluirUsuario(id);
 		return ResponseEntity.status(204).build();
 	}
