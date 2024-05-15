@@ -14,24 +14,18 @@ import lombok.Data;
 
 
 @Data
-
-//Para o codigo não ficar muito grande, pode realizar a instalação do lombok e colocar as anotações Getter e Setter, e remover os metodos acessores,
-//você consegue acessar normalmente, como se tivesse os metodos criados
-
-//O data ja é uma anotação completa, onde tem Get e Set em apenas uma anotação, caso tenha apreferencia de apenas Get ou apenas Set, pode ultilizar as anotações,@Getter ou @Setter
-
-@Entity //entidade do banco de dados
-@Table(name = "usuario") //tabela no banco de dados
+@Entity 
+@Table(name = "usuario") 
 public class Usuario {
 	
 	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //Valor auto incremente
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	@Column(name = "id")
 	private Integer id;
 	
-	@NotBlank(message =  "O email é obrigatorio!")//Campo não pode ser vazio ou nullo 
+	@NotBlank(message =  "O email é obrigatorio!")
 	@Size(min = 3, message = "O nome deve ter no minimo 3 caracteres!")
-	@Column(name = "nome", length = 200, nullable = false) //length serve para colocar um tamanho e o nullable não pode ser um campo vazio
+	@Column(name = "nome", length = 200, nullable = false) 
 	private String nome;
 	
 	@Email(message = "Insira um email valido!")
